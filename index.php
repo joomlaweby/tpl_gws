@@ -47,8 +47,6 @@ $this->getPreloadManager()->prefetch($wa->getAsset('style', $assetColorName)->ge
 // Enable assets
 $wa->usePreset('template.gws.' . ($this->direction === 'rtl' ? 'rtl' : 'ltr'))
 	->useStyle('template.active.language')
-	->useStyle('template.user')
-	->useScript('template.user')
 	->addInlineStyle(':root {
 		--hue: 214;
 		--template-bg-light: #f0f4fb;
@@ -59,7 +57,7 @@ $wa->usePreset('template.gws.' . ($this->direction === 'rtl' ? 'rtl' : 'ltr'))
 	}');
 
 // Override 'template.active' asset to set correct ltr/rtl dependency
-$wa->registerStyle('template.active', '', [], [], ['template.cassiopeia.' . ($this->direction === 'rtl' ? 'rtl' : 'ltr')]);
+$wa->registerStyle('template.active', '', [], [], ['template.gws.' . ($this->direction === 'rtl' ? 'rtl' : 'ltr')]);
 
 // Logo file or site title param
 if ($this->params->get('logoFile'))
